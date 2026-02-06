@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ADI v34 Math Mesh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+</head>
+<body>
+    <div class="background-haze" aria-hidden="true"></div>
+    <main class="shell">
+        <header class="hero">
+            <span class="badge">ADI v34 · Math Mesh Codec</span>
+            <h1>Convert any image into a geometric mesh painting.</h1>
+            <p>
+                Drop in a photo, and the math engine will rebuild it using thousands of adaptive triangles.
+                Tweak the vertex count, choose the export format, then download the generated art instantly.
+            </p>
+        </header>
+
+        <section class="layout">
+            <form id="convert-form" class="panel control" autocomplete="off">
+                <h2>1 · Upload & Configure</h2>
+                <div id="upload-zone" class="upload-zone" tabindex="0">
+                    <input type="file" id="file-input" accept="image/*" hidden />
+                    <p class="title">Drag an image here or click to browse</p>
+                    <p class="hint">PNG · JPG · WebP · TIFF · anything Pillow can decode</p>
+                </div>
+
+                <label class="stack">
+                    <span>Triangle detail <strong id="detail-readout">2500 vertices</strong></span>
+                    <input type="range" id="detail" min="500" max="5000" value="2500" step="250" />
+                </label>
+
+                <label class="stack">
+                    <span>Processing resolution cap (px)</span>
+                    <input type="number" id="max-dimension" min="400" max="1600" step="50" value="1000" />
+                </label>
+
+                <label class="stack">
+                    <span>Download format</span>
+                    <select id="format">
+                        <option value="png">PNG</option>
+                        <option value="jpeg">JPEG</option>
+                        <option value="webp">WebP</option>
+                        <option value="bmp">Bitmap (BMP)</option>
+                    </select>
+                </label>
+
+                <div class="actions">
+                    <button type="submit" class="btn primary" id="convert-btn">Generate Mesh</button>
+                    <button type="button" class="btn ghost" id="reset-btn">Clear</button>
+                    <a class="btn secondary hidden" id="download-link" download="math-mesh.png">Download Mesh</a>
+                </div>
+
+                <p id="status" class="status">Waiting for an image…</p>
+            </form>
+
+            <div class="panel preview">
+                <h2>2 · Compare</h2>
+                <div class="preview-grid">
+                    <figure>
+                        <figcaption>Original</figcaption>
+                        <img id="original-preview" alt="Original upload preview" />
+                    </figure>
+                    <figure>
+                        <figcaption>Math Mesh</figcaption>
+                        <img id="mesh-preview" alt="Mesh output preview" />
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section class="panel stats">
+            <h2>3 · Telemetry</h2>
+            <div class="stat-grid">
+                <div>
+                    <p class="label">Vertices</p>
+                    <p class="value" data-stat="vertices">—</p>
+                </div>
+                <div>
+                    <p class="label">Triangles</p>
+                    <p class="value" data-stat="triangles">—</p>
+                </div>
+                <div>
+                    <p class="label">Canvas</p>
+                    <p class="value" data-stat="canvas">—</p>
+                </div>
+                <div>
+                    <p class="label">Processing</p>
+                    <p class="value" data-stat="time">—</p>
+                </div>
+                <div>
+                    <p class="label">Scale</p>
+                    <p class="value" data-stat="scale">—</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}" type="module"></script>
+</body>
+</html>
