@@ -1,4 +1,4 @@
-# ADI v36 — Instruction-Based Visual Codec
+# ADI v0.1 — Instruction-Based Visual Codec
 
 ![ADI Hero](https://github.com/Aditya-bachhav/ADI-Codec/assets/hero.png)
 
