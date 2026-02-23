@@ -31,7 +31,7 @@ DENOM_Y = np.sum(YV**2)
 def encode_v28_fast(source_file):
     out_dir = "outputs"
     if not os.path.exists(out_dir): os.makedirs(out_dir)
-    out_file = os.path.join(out_dir, "image_v28_fast.adi")
+    out_file = os.path.join(out_dir, "ADI_IMG.adi")
     print(f"--- ADI v28 FAST ENCODER ---")
     
     start_time = time.time()
@@ -223,11 +223,11 @@ def decode_v28_fast(path):
 # --- GUI ---
 class ADIFastLiquidJudge:
     def __init__(self, root):
-        self.root = root; self.root.title("ADI Judge v28 (Fast Liquid)"); self.root.geometry("1400x800"); self.root.configure(bg="#000")
+        self.root = root; self.root.title("Codec"); self.root.geometry("1400x800"); self.root.configure(bg="#000")
         self.img_s = None; self.img_a = None; self.zoom = 2.0
         f = tk.Frame(root, bg="#222"); f.pack(fill=tk.X)
         tk.Button(f, text="Load Source", command=self.load_s, bg="#444", fg="white").pack(side=tk.LEFT, padx=10, pady=5)
-        tk.Button(f, text="ENCODE v28 FAST", command=self.do_encode, bg="#0088ff", fg="white").pack(side=tk.LEFT, padx=10, pady=5)
+        tk.Button(f, text="ENCODE v1", command=self.do_encode, bg="#0088ff", fg="white").pack(side=tk.LEFT, padx=10, pady=5)
         self.lbl = tk.Label(f, text="Ready", bg="#222", fg="gray"); self.lbl.pack(side=tk.LEFT, padx=20)
         vp = tk.Frame(root, bg="black"); vp.pack(fill=tk.BOTH, expand=True)
         self.cl = tk.Canvas(vp, bg="black"); self.cl.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
