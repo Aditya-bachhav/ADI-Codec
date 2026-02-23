@@ -1,6 +1,6 @@
 # ADI v0.1 — Instruction-Based Visual Codec
 
-![ADI Hero](![ADI Hero](assets/hero.png))
+![ADI Hero]((assets/hero.png))
 
 **Pixels are dead.**  
 ADI encodes images as **learned instructions** — a 32k-token "alien alphabet" that adapts to every scene.  
